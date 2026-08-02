@@ -1,0 +1,43 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #F6F5F4;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+}
+
+input, select, button {
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 30px
+}
+
+input {
+    transition: background-color 0.5s ease;
+    cursor: pointer;
+}
+
+input:hover {
+background-color: #bdbdbd
+}
+
+button {
+    transition: background-color 0.5s ease;
+    cursor: pointer;
+}
+
+select {
+    transition: background-color 0.5s ease;
+    cursor: context-menu
+}
+
+select:hover {
+    background-color: #bdbdbd
+}
+
+button:hover {
+    background-color: #bdbdbd
+}

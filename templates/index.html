@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body style="
+    background-color: {{ bg_color }};
+    {% if bg_image_url %}
+    background-image: url('{{ bg_image_url }}');
+    background-size: cover;
+    background-position: center;
+    {% endif %}
+">
+
+
+    <h1>Task Manager</h1>
+
+    <form action="/add" method="post">
+        <input type="text" name="title" placeholder="Title" required>
+        <input type="text" name="description" placeholder="Description" required>
+        <select name="priority" required>
+        <option value="" disabled selected>Choose priority</option>
+            <option value="1">1 (hight)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7 (low)</option>
+        </select>
+        <input type="text" name="deadline" placeholder="Deadline" required>
+        <button type="submit">Add task</button>
+    </form>
+
+    <form action="/background" method="post">
+        <input type="color" name="bg_color">
+        <input type="text" name="bg_image_url" placeholder="Image URL">
+        <button type="submit">Set background</button>
+    </form>
+<!--
+    <form action="/clear" method="post" style="margin-top: 10px;" onsubmit="return confirm('clear all tasks?');">
+    <button type="submit">Clear all tasks</button>
+    </form>
+-->
+    <form action="/export" method="POST">
+        <button type="submit">Download .docx</button>
+    </form>
+
+    <form action="/stop" method="POST" onsubmit="return confirm('Exit?');">
+        <button type="submit">Shutdown</button>
+    </form>
+
+    <hr>
+
+{% for task in tasks %}
+    <div class="task">
+        <span><b>Title:</b> {{ task.title }}</span>
+        <span><b>Description:</b> {{ task.description }}</span>
+        <span><b>Priority:</b> {{ task.priority }}</span>
+        <span><b>Deadline:</b> {{ task.deadline }}</span>
+        <span><b>Done:</b> {{ task.done }}</span>
+
+        <form action="/delete/{{ task.id }}" method="post" class="action-form" onsubmit="return confirm('Delete task?')">
+            <button type="submit">Delete</button>
+        </form>
+
+        <form action="/toggle/{{ task.id }}" method="post" class="action-form mark-done-form">
+            <button type="submit">Toggle</button>
+        </form>
+
+        <form action="/edit/{{ task.id }}" method="post" class="action-form">
+            <button type="submit">Edit</button>
+        </form>
+
+    </div>
+{% else %}
+    <p>No tasks.</p>
+{% endfor %}
+
+<div style="opacity: 0.3; position: fixed; bottom: 10px; right: 20px;">
+    V.2.3.1_ENG // number of tasks: {{tasks_quantity}} // tasks.json: {{data_file}}
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.0/dist/confetti.browser.min.js"></script>
+
+<script>
+document.querySelectorAll('.mark-done-form').forEach(form => {
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        confetti({
+            particleCount: 1000,
+            spread: 180,
+            ticks: 60,
+            origin: { y: 1 }
+        });
+
+        setTimeout(() => form.submit(), 900);
+    });
+});
+</script>
+
+</body>
+</html>

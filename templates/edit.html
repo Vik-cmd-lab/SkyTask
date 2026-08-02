@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit task</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='edit.css') }}">
+</head>
+<body>
+    <h1>Edit task {{ task.id }}: {{ task.title }}</h1>
+
+    <form action="/update/{{ task.id }}" method="post">
+        <input type="text" name="title" placeholder="Title: {{ task.title }}" required>
+        <input type="text" name="description" placeholder="Description: {{ task.description }}" required>
+        <select name="priority" required>
+        <option value="" disabled selected>Choose new priority</option>
+            <option value="1">1 (hight)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7 (low)</option>
+        </select>
+        <input type="text" name="deadline" placeholder="Deadline: {{ task.deadline }}" required>
+        <button type="submit">Save</button>
+    </form>
+
+    <button onclick="window.history.back()">Back</button>
+</body>
+</html>

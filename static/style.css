@@ -1,0 +1,66 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #000000;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+}
+
+form {
+    margin-bottom: 15px;
+}
+
+input, select, button {
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 30px
+}
+
+input {
+    transition: background-color 0.5s ease;
+    cursor: pointer;
+}
+
+input:hover {
+background-color: #bdbdbd
+}
+
+button {
+    transition: background-color 0.5s ease;
+    cursor: pointer;
+}
+
+select {
+    transition: background-color 0.5s ease;
+    cursor: context-menu
+}
+
+select:hover {
+    background-color: #bdbdbd
+}
+
+button:hover {
+    background-color: #bdbdbd
+}
+
+.task {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    background: white;
+
+}
+
+.action-form {
+    margin: 0;
+    display: flex;
+    align-items: center;
+}

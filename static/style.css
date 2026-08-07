@@ -64,3 +64,21 @@ button:hover {
     display: flex;
     align-items: center;
 }
+
+#del-btn button:hover {
+    background-color: #e66767;
+    font-weight: bold;
+    transition: background-color 0.5s ease;
+}
+
+#toggle-btn button:hover {
+    background-color: #8ae082;
+    font-weight: bold;
+    transition: background-color 0.5s ease;
+}
+
+#edit-btn button:hover {
+    background-color: #6ca1eb;
+    font-weight: bold;
+    transition: background-color 0.5s ease;
+}

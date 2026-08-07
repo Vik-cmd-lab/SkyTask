@@ -63,15 +63,15 @@
         <span><b>Deadline:</b> {{ task.deadline }}</span>
         <span><b>Done:</b> {{ task.done }}</span>
 
-        <form action="/delete/{{ task.id }}" method="post" class="action-form" onsubmit="return confirm('Delete task?')">
+        <form action="/delete/{{ task.id }}" method="post" class="action-form" id="del-btn" onsubmit="return confirm('Delete task?')">
             <button type="submit">Delete</button>
         </form>
 
-        <form action="/toggle/{{ task.id }}" method="post" class="action-form mark-done-form">
+        <form action="/toggle/{{ task.id }}" method="post" class="action-form mark-done-form" id="toggle-btn">
             <button type="submit">Toggle</button>
         </form>
 
-        <form action="/edit/{{ task.id }}" method="post" class="action-form">
+        <form action="/edit/{{ task.id }}" method="post" class="action-form" id="edit-btn">
             <button type="submit">Edit</button>
         </form>
 

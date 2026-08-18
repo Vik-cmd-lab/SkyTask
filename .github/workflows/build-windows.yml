@@ -22,5 +22,5 @@ jobs:
           pyinstaller --onefile --noconsole --icon=favicon.ico --name SkyTask --add-data "templates;templates" --add-data "static;static" main.py
       - uses: actions/upload-artifact@v4
         with:
-          name: SkyTask-windows-ENG
+          name: SkyTask-windows-ENG-2.3.2
           path: dist/SkyTask.exe
